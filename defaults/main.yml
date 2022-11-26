@@ -1,0 +1,8 @@
+---
+
+# Retrieve SSL certificate from let's encrypt
+wordpress_certbot: true
+
+# Custom SSL certificate
+# wordpress_ssl_key: /path/to/key
+# wordpress_ssl_certificate_chain: /path/to/certificate/chain

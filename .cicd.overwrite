@@ -1,0 +1,105 @@
+---
+
+# Generic
+generic:
+  role: ansible-role-wordpress_docker
+  role_short: wordpress_docker
+  role_description: |
+    Sets up a Wordpress instance using Docker.
+    This consists of Wordpress/PHP/MySQL/Nginx
+
+# Supported platforms
+platforms:
+  rhel7:
+    ci: false
+    supported: false
+  rhel8:
+    ci: false
+    supported: true
+  rhel9:
+    ci: false
+    supported: true
+  centos7:
+    ci: false
+    supported: false
+  centos8:
+    ci: false
+    supported: false
+  centos8s:
+    ci: false
+    supported: false
+  centos9s:
+    ci: false
+    supported: false
+  rockylinux8:
+    ci: false
+    supported: true
+  rockylinux9:
+    ci: false
+    supported: true
+  oraclelinux8:
+    ci: false
+    supported: true
+  oraclelinux9:
+    ci: false
+    supported: true
+  almalinux8:
+    ci: false
+    supported: true
+  almalinux9:
+    ci: false
+    supported: true
+  debian10:
+    ci: false
+    supported: true
+  debian11:
+    ci: false
+    supported: true
+  ubuntu1804:
+    ci: false
+    supported: true
+  ubuntu2004:
+    ci: false
+    supported: true
+  ubuntu2204:
+    ci: false
+    supported: true
+  fedora35:
+    ci: false
+    supported: true
+  fedora36:
+    ci: false
+    supported: true
+  alpine3:
+    ci: false
+    supported: true
+  docker:
+    ci: true
+    supported: true
+
+# Molecule
+molecule:
+  requirements:
+    roles_extra:
+      - openssl
+      - python
+  converge:
+    roles:
+      - openssl
+    vars:
+      # Mysql
+      mysql_root_password: wordpress
+      mysql_user: wordpress
+      mysql_password: wordpress
+      mysql_database: wordpress
+      # Wordpress
+      wordpress_certbot: false
+      wordpress_domain: example.com
+      wordpress_docker_data: /export/docker/wordpress
+      wordpress_db_name: wordpress
+      wordpress_db_user: wordpress
+      wordpress_db_pwd: wordpress
+      # Let's encrypt
+      letsencrypt_email: info@{{ wordpress_domain }}
+      letsencrypt_domain: "{{ wordpress_domain }}"
+      letsencrypt_domains: "{{ [ wordpress_domain ] }}"

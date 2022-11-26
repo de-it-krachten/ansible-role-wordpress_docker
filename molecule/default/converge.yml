@@ -1,0 +1,31 @@
+---
+
+- name: Converge
+  hosts: all
+  become: "yes"
+  vars:
+    mysql_root_password: wordpress
+    mysql_user: wordpress
+    mysql_password: wordpress
+    mysql_database: wordpress
+    wordpress_certbot: False
+    wordpress_domain: example.com
+    wordpress_docker_data: /export/docker/wordpress
+    wordpress_db_name: wordpress
+    wordpress_db_user: wordpress
+    wordpress_db_pwd: wordpress
+    letsencrypt_email: "info@{{ wordpress_domain }}"
+    letsencrypt_domain: "{{ wordpress_domain }}"
+    letsencrypt_domains: "{{ [ wordpress_domain ] }}"
+  pre_tasks:
+    - name: Create 'remote_tmp'
+      ansible.builtin.file:
+        path: /root/.ansible/tmp
+        state: directory
+        mode: "0700"
+  roles:
+    - openssl
+  tasks:
+    - name: Include role 'ansible-role-wordpress_docker'
+      ansible.builtin.include_role:
+        name: ansible-role-wordpress_docker
