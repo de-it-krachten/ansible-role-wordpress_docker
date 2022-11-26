@@ -5,7 +5,7 @@
     that:
       - wordpress_docker_data is defined
 
-- name: Create docker
+- name: Create location to export files to docker container from
   ansible.builtin.file:
     path: "{{ wordpress_docker_data }}"
     state: directory
@@ -25,7 +25,7 @@
       mode: "0600"
     - src: "{{ openssl_server_crt }}"
       dest: "{{ wordpress_docker_data }}/fullchain.pem"
-  when: openssl_server_key is defined
+  when: openssl_server_key is defined and openssl_server_crt is defined
 
 - name: Copy custom SSL certificate
   copy:
@@ -39,7 +39,7 @@
       mode: "0600"
     - src: "{{ wordpress_ssl_certificate_chain }}"
       dest: "{{ wordpress_docker_data }}/fullchain.pem"
-  when: wordpress_ssl_key is defined
+  when: wordpress_ssl_key is defined and wordpress_ssl_certificate_chain is defined
 
 - name: Create wordpress/nginx configuration files
   ansible.builtin.template:
