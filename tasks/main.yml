@@ -14,7 +14,7 @@
     mode: "0750"
 
 - name: Copy OpenSSL Self-signed key + certificate
-  copy:
+  ansible.builtin.copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     mode: "{{ item.mode | default('0644') }}"
@@ -29,7 +29,7 @@
   when: openssl_server_key is defined and openssl_server_crt is defined
 
 - name: Copy custom SSL certificate
-  copy:
+  ansible.builtin.copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     mode: "{{ item.mode | default('0644') }}"
