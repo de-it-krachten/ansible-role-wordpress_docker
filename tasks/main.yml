@@ -25,6 +25,7 @@
       mode: "0600"
     - src: "{{ openssl_server_crt }}"
       dest: "{{ wordpress_docker_data }}/fullchain.pem"
+  notify: Restart services
   when: openssl_server_key is defined and openssl_server_crt is defined
 
 - name: Copy custom SSL certificate
@@ -32,13 +33,14 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     mode: "{{ item.mode | default('0644') }}"
-    remote_src: true
+    remote_src: "{{ True if roundcube_ssl_key is search('^/') else False }}"
   loop:
     - src: "{{ wordpress_ssl_key }}"
       dest: "{{ wordpress_docker_data }}/privkey.pem"
       mode: "0600"
     - src: "{{ wordpress_ssl_certificate_chain }}"
       dest: "{{ wordpress_docker_data }}/fullchain.pem"
+  notify: Restart services
   when: wordpress_ssl_key is defined and wordpress_ssl_certificate_chain is defined
 
 - name: Create wordpress/nginx configuration files
@@ -49,33 +51,12 @@
   loop:
     - src: templates/docker-compose.yml.j2
       dest: "{{ wordpress_docker_data }}/docker-compose.yml"
-    - src: templates/nginx-wp.conf.j2
-      dest: "{{ wordpress_docker_data }}/nginx-wp.conf"
+    - src: templates/nginx-wordpress.conf.j2
+      dest: "{{ wordpress_docker_data }}/nginx-wordpress.conf"
     - src: templates/nginx-default.conf.j2
       dest: "{{ wordpress_docker_data }}/nginx-default.conf"
     - src: templates/nginx-ssl.conf.j2
       dest: "{{ wordpress_docker_data }}/nginx-ssl.conf"
     - src: templates/env.j2
       dest: "{{ wordpress_docker_data }}/.env"
-
-# - name: Start wordpress using docker-compose
-#   community.docker.docker_compose:
-#     project_name: wordpress
-#     definition: "{{ lookup('template', 'docker-compose.yml.j2') | from_yaml }}"
-#   register: __docker_compose
-#
-# - name: Show results
-#   ansible.builtin.debug:
-#     var: __docker_compose
-
-- name: Start wordpress using docker-compose
-  ansible.builtin.command:
-    cmd: docker-compose up -d
-  args:
-    chdir: "{{ wordpress_docker_data }}"
-  register: __docker_compose
-  changed_when: __docker_compose.stdout is search('(Starting|Creating)')
-
-- name: Show results
-  ansible.builtin.debug:
-    var: __docker_compose
+  notify: Restart services

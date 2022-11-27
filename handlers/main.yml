@@ -1,0 +1,7 @@
+---
+
+- name: Restart services
+  community.docker.docker_compose:
+    project_src: "{{ wordpress_docker_data }}"
+    build: false
+    restarted: true
