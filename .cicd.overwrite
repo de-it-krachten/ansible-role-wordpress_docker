@@ -5,8 +5,8 @@ generic:
   role: ansible-role-wordpress_docker
   role_short: wordpress_docker
   role_description: |
-    Sets up a Wordpress instance using Docker.
-    This consists of Wordpress/PHP/MySQL/Nginx
+    Sets up a Wordpress instance using Docker.<br>
+    This consists of Wordpress/PHP/MySQL/nginx<br>
 
 # Supported platforms
 platforms:
