@@ -1,0 +1,40 @@
+server {
+        listen 80;
+        listen [::]:80;
+
+        server_name localhost default;
+
+        location / {
+                rewrite ^ https://$host$request_uri? permanent;
+        }
+}
+
+server {
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+        server_name localhost default;
+
+        index index.php index.html index.htm;
+
+        root /var/www/html;
+
+        server_tokens off;
+
+        #ssl_certificate /etc/letsencrypt/live/your_domain/fullchain.pem;
+        #ssl_certificate_key /etc/letsencrypt/live/your_domain/privkey.pem;
+        ssl_certificate /etc/nginx/certs/fullchain.pem;
+        ssl_certificate_key /etc/nginx/certs/privkey.pem;
+
+        include /etc/nginx/conf.d/options-ssl-nginx.conf;
+
+        location / {
+          root   /usr/share/nginx/html;
+          index  index.html index.htm;
+         }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+          root   /usr/share/nginx/html;
+        }
+
+}

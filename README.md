@@ -3,8 +3,8 @@
 
 # ansible-role-wordpress_docker
 
-Sets up a Wordpress instance using Docker.
-This consists of Wordpress/PHP/MySQL/Nginx
+Sets up a Wordpress instance using Docker.<br>
+This consists of Wordpress/PHP/MySQL/nginx<br>
 
 
 
@@ -76,12 +76,6 @@ wordpress_certbot: true
     letsencrypt_email: "info@{{ wordpress_domain }}"
     letsencrypt_domain: "{{ wordpress_domain }}"
     letsencrypt_domains: "{{ [ wordpress_domain ] }}"
-  pre_tasks:
-    - name: Create 'remote_tmp'
-      ansible.builtin.file:
-        path: /root/.ansible/tmp
-        state: directory
-        mode: "0700"
   roles:
     - openssl
   tasks:
