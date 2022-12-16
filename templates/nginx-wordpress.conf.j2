@@ -25,6 +25,8 @@ server {
 
         server_tokens off;
 
+        client_max_body_size {{ wordpress_max_upload_size }};
+
         #ssl_certificate /etc/letsencrypt/live/your_domain/fullchain.pem;
         #ssl_certificate_key /etc/letsencrypt/live/your_domain/privkey.pem;
         ssl_certificate /etc/nginx/certs/fullchain.pem;

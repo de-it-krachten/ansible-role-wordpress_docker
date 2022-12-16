@@ -59,4 +59,6 @@
       dest: "{{ wordpress_docker_data }}/nginx-ssl.conf"
     - src: templates/env.j2
       dest: "{{ wordpress_docker_data }}/.env"
+    - src: templates/php.ini.j2
+      dest: "{{ wordpress_docker_data }}/php.ini"
   notify: Restart services
