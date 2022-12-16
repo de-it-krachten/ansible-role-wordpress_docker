@@ -15,7 +15,6 @@ None
 
 #### Collections
 - community.general
-- community.general
 
 ## Platforms
 
@@ -51,6 +50,9 @@ wordpress_certbot: true
 # Custom SSL certificate
 # wordpress_ssl_key: /path/to/key
 # wordpress_ssl_certificate_chain: /path/to/certificate/chain
+
+# Max upload size
+wordpress_max_upload_size: 100M
 </pre></code>
 
 
