@@ -79,7 +79,7 @@ wordpress_max_upload_size: 100M
     letsencrypt_domain: "{{ wordpress_domain }}"
     letsencrypt_domains: "{{ [ wordpress_domain ] }}"
   roles:
-    - openssl
+    - deitkrachten.openssl
   tasks:
     - name: Include role 'wordpress_docker'
       ansible.builtin.include_role:
