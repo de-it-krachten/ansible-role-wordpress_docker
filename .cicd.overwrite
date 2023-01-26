@@ -81,11 +81,11 @@ platforms:
 molecule:
   requirements:
     roles_extra:
-      - openssl
-      - python
+      - deitkrachten.openssl
+      - deitkrachten.python
   converge:
     roles:
-      - openssl
+      - deitkrachten.openssl
     vars:
       # Mysql
       mysql_root_password: wordpress
