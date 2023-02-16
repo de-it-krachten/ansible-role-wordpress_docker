@@ -31,6 +31,8 @@ services:
       - ./php.ini:/usr/local/etc/php/php.ini:ro
     networks:
       - app-network
+    ports:
+      - 9000:9000
 
 {% if wordpress_certbot | bool %}
   certbot:
@@ -42,6 +44,7 @@ services:
     command: certonly --webroot --webroot-path=/var/www/html --email {{ letsencrypt_email }} --agree-tos --no-eff-email --force-renewal -d {{ letsencrypt_domains | join(' -d ') }}
 {% endif %}
 
+{% if wordpress_nginx_docker | bool %}
   webserver:
     depends_on:
 {% if wordpress_certbot | bool %}
@@ -66,6 +69,7 @@ services:
 {% endif %}
     networks:
       - app-network
+{% endif %}
 
 volumes:
 {% if wordpress_certbot | bool %}

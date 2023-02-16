@@ -1,0 +1,53 @@
+---
+
+- name: Define some variables
+  ansible.builtin.set_fact:
+    docker_ssl_certificate: "{{ wordpress_docker_data }}/fullchain.pem"
+    docker_ssl_certificate_key: "{{ wordpress_docker_data }}/privkey.pem"
+    nginx_ssl_certificate: /etc/nginx/certs/fullchain.pem
+    nginx_ssl_certificate_key: /etc/nginx/certs/privkey.pem
+
+- name: Copy OpenSSL Self-signed key + certificate
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode | default('0644') }}"
+    remote_src: true
+  loop:
+    - src: "{{ openssl_server_key }}"
+      dest: "{{ docker_ssl_certificate_key }}"
+      mode: "0600"
+    - src: "{{ openssl_server_crt }}"
+      dest: "{{ docker_ssl_certificate }}"
+  notify: Restart docker
+  when: openssl_server_key is defined and openssl_server_crt is defined
+
+- name: Copy custom SSL certificate
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode | default('0644') }}"
+    remote_src: "{{ True if wordpress_ssl_key is search('^/') else False }}"
+  loop:
+    - src: "{{ wordpress_ssl_key }}"
+      dest: "{{ docker_ssl_certificate_key }}"
+      mode: "0600"
+    - src: "{{ wordpress_ssl_certificate_chain }}"
+      dest: "{{ docker_ssl_certificate }}"
+  notify: Restart docker
+  when: wordpress_ssl_key is defined and wordpress_ssl_certificate_chain is defined
+
+- name: Create nginx configuration files
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop:
+    - src: templates/nginx-wordpress.conf.j2
+      dest: "{{ wordpress_docker_data }}/nginx-wordpress.conf"
+    - src: templates/nginx-default.conf.j2
+      dest: "{{ wordpress_docker_data }}/nginx-default.conf"
+    - src: templates/nginx-ssl.conf.j2
+      dest: "{{ wordpress_docker_data }}/nginx-ssl.conf"
+  notify:
+    - Restart docker
