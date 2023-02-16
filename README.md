@@ -44,8 +44,14 @@ Note:
 ## Role Variables
 ### defaults/main.yml
 <pre><code>
+# Wordpress FQDN
+wordpress_fqdn: wp.example.com
+
 # Retrieve SSL certificate from let's encrypt
 wordpress_certbot: true
+
+# Run nginx in docker
+wordpress_nginx_docker: true
 
 # Custom SSL certificate
 # wordpress_ssl_key: /path/to/key
