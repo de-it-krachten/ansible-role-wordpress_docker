@@ -18,7 +18,8 @@
     letsencrypt_domain: "{{ wordpress_domain }}"
     letsencrypt_domains: "{{ [ wordpress_domain ] }}"
   roles:
-    - openssl
+    - deitkrachten.showinfo
+    - deitkrachten.openssl
   tasks:
     - name: Include role 'ansible-role-wordpress_docker'
       ansible.builtin.include_role:
