@@ -53,6 +53,9 @@ wordpress_certbot: true
 # Run nginx in docker
 wordpress_nginx_docker: true
 
+# Is there a reverse proxy in front
+wordpress_reverse_proxy: false
+
 # Custom SSL certificate
 # wordpress_ssl_key: /path/to/key
 # wordpress_ssl_certificate_chain: /path/to/certificate/chain
