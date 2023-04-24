@@ -54,9 +54,15 @@ services:
     image: nginx:1-alpine
     # container_name: webserver
     restart: unless-stopped
+{% if wordpress_reverse_proxy | bool %}
+    expose:
+      - 80
+      - 443
+{% else %}
     ports:
       - "80:80"
       - "443:443"
+{% endif %}
     volumes:
       - wordpress:/var/www/html
       - ./nginx-wordpress.conf:/etc/nginx/conf.d/wordpress.conf:ro
@@ -69,6 +75,10 @@ services:
 {% endif %}
     networks:
       - app-network
+    environment:
+      - VIRTUAL_HOST={{ wordpress_fqdn }}
+      - VIRTUAL_PROTO=https
+      - VIRTUAL_PORT=443
 {% endif %}
 
 volumes:
