@@ -30,11 +30,12 @@ Supported platforms
 - AlmaLinux 9<sup>1</sup>
 - Debian 10 (Buster)<sup>1</sup>
 - Debian 11 (Bullseye)<sup>1</sup>
+- Debian 12 (Bookworm)<sup>1</sup>
 - Ubuntu 18.04 LTS<sup>1</sup>
 - Ubuntu 20.04 LTS<sup>1</sup>
 - Ubuntu 22.04 LTS<sup>1</sup>
-- Fedora 36<sup>1</sup>
 - Fedora 37<sup>1</sup>
+- Fedora 38<sup>1</sup>
 - Alpine 3<sup>1</sup>
 - Docker dind (CI only)
 
@@ -88,7 +89,6 @@ wordpress_max_upload_size: 100M
     letsencrypt_domain: "{{ wordpress_domain }}"
     letsencrypt_domains: "{{ [ wordpress_domain ] }}"
   roles:
-    - deitkrachten.showinfo
     - deitkrachten.openssl
   tasks:
     - name: Include role 'wordpress_docker'
