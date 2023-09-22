@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.1.0...v1.2.0) (2023-09-22)
+
+
+### Features
+
+* Update supported platforms & CI ([d8972b5](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/d8972b5a35bc1b23aaab185838170f58f54a5fa4))
+
 # [1.1.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.0.1...v1.1.0) (2023-04-10)
 
 
