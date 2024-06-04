@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.2.0...v1.3.0) (2024-06-04)
+
+
+### Features
+
+* Add support for Ubuntu 24.04 LTS + Fedora 40 ([71028c0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/71028c0ac10acd5e662afcc7be0fa5bc47524e80))
+
 # [1.2.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.1.0...v1.2.0) (2023-09-22)
 
 
