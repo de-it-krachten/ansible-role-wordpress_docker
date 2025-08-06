@@ -13,11 +13,13 @@ galaxy_info:
       versions:
         - '8'
         - '9'
+        - '10'
     - name: Debian
       versions:
         - buster
         - bullseye
         - bookworm
+        - trixie
     - name: Ubuntu
       versions:
         - bionic
