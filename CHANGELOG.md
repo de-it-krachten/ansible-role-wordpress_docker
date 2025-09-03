@@ -1,3 +1,14 @@
+# [1.5.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.4.0...v1.5.0) (2025-09-03)
+
+
+### Features
+
+* Add support for AlmaLinux 10 ([6dd45ce](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/6dd45ce3b0087dc864c99fb16c8546a5400a4c27))
+* Add support for Debian 13 (Trixie) ([a89293e](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/a89293eefb30f8541e051541bd6314a32586fc41))
+* Add support for OracleLinux 10 ([df482dc](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/df482dccd2e62d4161227ea70a2722249282e574))
+* Add support for Red Hat Enterprise Linux 10 ([348fb14](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/348fb14a0db6d00dac6e2d4ead48112a42eff838))
+* Add support for RockyLinux 10 ([856c706](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/856c7062361e5819790c0b27853868ccbf0382a9))
+
 # [1.4.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.3.0...v1.4.0) (2024-12-29)
 
 
