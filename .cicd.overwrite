@@ -10,117 +10,78 @@ generic:
 
 # Supported platforms
 platforms:
-  rhel7:
-    ci: false
-    supported: false
-  rhel8:
-    ci: false
-    supported: true
-  rhel9:
-    ci: false
-    supported: true
-  rhel10:
-    ci: false
-    supported: true
-  centos7:
-    ci: false
-    supported: false
-  centos8:
-    ci: false
-    supported: false
-  centos8s:
-    ci: false
-    supported: false
-  centos9s:
-    ci: false
-    supported: false
-  centos10s:
-    ci: false
-    supported: false
   rockylinux8:
-    ci: false
     supported: true
+    ci: false
   rockylinux9:
-    ci: false
     supported: true
+    ci: false
   rockylinux10:
-    ci: false
     supported: true
+    ci: false
   oraclelinux8:
-    ci: false
     supported: true
+    ci: false
   oraclelinux9:
-    ci: false
     supported: true
+    ci: false
   oraclelinux10:
-    ci: false
     supported: true
+    ci: false
   almalinux8:
-    ci: false
     supported: true
+    ci: false
   almalinux9:
-    ci: false
     supported: true
+    ci: false
   almalinux10:
-    ci: false
     supported: true
+    ci: false
   sles15:
-    ci: false
     supported: true
+    ci: false
+  sles16:
+    supported: true
+    ci: false
   opensuse15:
-    ci: false
     supported: true
-  debian10:
     ci: false
+  opensuse16:
     supported: true
+    ci: false
   debian11:
-    ci: false
     supported: true
+    ci: false
   debian12:
-    ci: false
     supported: true
+    ci: false
   debian13:
-    ci: false
     supported: true
+    ci: false
   ubuntu1804:
-    ci: false
     supported: true
+    ci: false
   ubuntu2004:
-    ci: false
     supported: true
+    ci: false
   ubuntu2204:
-    ci: false
     supported: true
+    ci: false
   ubuntu2404:
-    ci: false
     supported: true
-  fedora41:
     ci: false
-    supported: true
   fedora42:
-    ci: false
     supported: true
+    ci: false
+  fedora43:
+    supported: true
+    ci: false
   alpine3:
-    ci: false
     supported: true
+    ci: false
   docker:
-    ci: true
     supported: true
-  win2012r2:
-    ci: false
-    supported: false
-  win2016:
-    ci: false
-    supported: false
-  win2019:
-    ci: false
-    supported: false
-  win2022:
-    ci: false
-    supported: false
-  win2025:
-    ci: false
-    supported: false
+    ci: true
 
 # Molecule
 molecule:
