@@ -32,9 +32,6 @@ Supported platforms
 - AlmaLinux 8<sup>1</sup>
 - AlmaLinux 9<sup>1</sup>
 - AlmaLinux 10<sup>1</sup>
-- SUSE Linux Enterprise 15<sup>1</sup>
-- openSUSE Leap 15<sup>1</sup>
-- Debian 10 (Buster)<sup>1</sup>
 - Debian 11 (Bullseye)<sup>1</sup>
 - Debian 12 (Bookworm)<sup>1</sup>
 - Debian 13 (Trixie)<sup>1</sup>
@@ -42,13 +39,14 @@ Supported platforms
 - Ubuntu 20.04 LTS<sup>1</sup>
 - Ubuntu 22.04 LTS<sup>1</sup>
 - Ubuntu 24.04 LTS<sup>1</sup>
-- Fedora 41<sup>1</sup>
 - Fedora 42<sup>1</sup>
+- Fedora 43<sup>1</sup>
 - Alpine 3<sup>1</sup>
 - Docker dind (CI only)
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
+
 
 ## Role Variables
 ### defaults/main.yml
@@ -83,6 +81,7 @@ wordpress_max_upload_size: 100M
   hosts: all
   become: 'yes'
   vars:
+    molecule_driver: '{{ lookup(''env'', ''MOLECULE_DRIVER_NAME'') }}'
     mysql_root_password: wordpress
     mysql_user: wordpress
     mysql_password: wordpress
