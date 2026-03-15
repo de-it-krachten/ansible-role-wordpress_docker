@@ -1,3 +1,14 @@
+# [1.6.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.5.0...v1.6.0) (2026-03-15)
+
+
+### Features
+
+* Added support for Fedora 43 ([c07b60e](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/c07b60e5bbbe4f2cc6a577a910d3299710ccf0cd))
+* Drop support for Debian 10 (Buster) ([1fdb3e0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/1fdb3e09b4e3d9693f549e89df94e2e0e618cc02))
+* Drop support for Fedora 41 ([25a500a](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/25a500a465e32d3f17bd66b9270a93812f8f3604))
+* Drop support for openSUSE Leap 15 ([8ffe50d](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/8ffe50d2c5eb92a80118862356a36e404eff0f40))
+* Drop support for SUSE Linux Enterprise 15 ([0528a2b](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/0528a2b9ec20af8667e6a409e9e2247a0655db98))
+
 # [1.5.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.4.0...v1.5.0) (2025-09-03)
 
 
