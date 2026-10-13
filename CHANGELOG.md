@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.7.0...v1.8.0) (2026-10-13)
+
+
+### Features
+
+* Drop support for Debian 11 (Bullseye) ([490c43d](https://github.com/de-it-krachten/ansible-role-wordpress_docker/commit/490c43d611c8a6b801efb50eda7d4cc51ef58412))
+
 # [1.7.0](https://github.com/de-it-krachten/ansible-role-wordpress_docker/compare/v1.6.0...v1.7.0) (2026-07-26)
 
 
